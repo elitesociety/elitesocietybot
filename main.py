@@ -53,17 +53,8 @@ async def mission(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         await query.message.reply_video(
             video=open("mission1.mp4", "rb"),
-
-            caption="""
-🎯 MISSION #001
-
-Your first mission has started.
-
-Watch every detail carefully.
-The smallest clue can change everything.
-
-Good luck, Agent.
-            """
+            caption='🎯 MISSION #001\n\nHint : "A familiar mask. A familiar secret."\n\nPASSWORD : <a href="https://forms.gle/BrY71x59TjJB5btt9">Tell us</a>',
+            parse_mode="HTML"
         )
 
 
