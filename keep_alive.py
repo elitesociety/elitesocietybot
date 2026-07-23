@@ -17,5 +17,8 @@ def run():
 
 
 def keep_alive():
-    server = Thread(target=run)
-    server.start()
+    t = Thread(
+        target=run,
+        daemon=True
+    )
+    t.start()
