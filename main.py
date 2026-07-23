@@ -3,7 +3,8 @@ import os
 from telegram import (
     Update,
     InlineKeyboardButton,
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
+    ReplyKeyboardRemove
 )
 
 from telegram.ext import (
@@ -21,6 +22,10 @@ TOKEN = os.getenv("BOT_TOKEN")
 
 # Welcome message
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    # Remove any leftover reply keyboard from a previous bot
+    removal = await update.message.reply_text("​", reply_markup=ReplyKeyboardRemove())
+    await removal.delete()
 
     keyboard = [
         [
