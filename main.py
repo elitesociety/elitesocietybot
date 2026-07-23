@@ -35,7 +35,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
     await update.message.reply_photo(
-        photo=open("welcome.jpg", "rb"),
+        photo=open("Welcome.jpg", "rb"),
         reply_markup=reply_markup
     )
 
