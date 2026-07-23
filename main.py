@@ -19,7 +19,7 @@ from keep_alive import keep_alive
 TOKEN = os.getenv("BOT_TOKEN")
 
 
-# Welcome Image
+# Welcome message
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     keyboard = [
@@ -36,15 +36,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_photo(
         photo=open("welcome.jpg", "rb"),
-
-        caption="""
-🕵️ Welcome to Elite Society
-
-Your journey begins now.
-
-Are you ready to uncover the truth?
-        """,
-
         reply_markup=reply_markup
     )
 
@@ -68,10 +59,10 @@ async def mission(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 Your first mission has started.
 
-Watch carefully.
-Every detail matters.
+Watch every detail carefully.
+The smallest clue can change everything.
 
-Good luck.
+Good luck, Agent.
             """
         )
 
@@ -79,12 +70,15 @@ Good luck.
 
 def main():
 
+    # Start web server for UptimeRobot
     keep_alive()
 
 
+    # Create bot
     app = Application.builder().token(TOKEN).build()
 
 
+    # /start command
     app.add_handler(
         CommandHandler(
             "start",
@@ -93,6 +87,7 @@ def main():
     )
 
 
+    # Button handler
     app.add_handler(
         CallbackQueryHandler(
             mission
@@ -103,6 +98,7 @@ def main():
     print("Elite Society Bot Started")
 
 
+    # Run bot
     app.run_polling()
 
 
